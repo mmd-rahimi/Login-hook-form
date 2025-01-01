@@ -19,7 +19,7 @@ export const Header = () => {
         DIGI STYLE
       </h1>
       <input
-        className="border-b-2 w-48 p-2"
+        className="border-b-2 w-48 p-2 focus:outline-none"
         placeholder="جستجو..."
         type="search"
       />
