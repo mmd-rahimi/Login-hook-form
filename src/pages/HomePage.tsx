@@ -1,6 +1,10 @@
+import { Header } from "../components/Header";
 
 export const HomePage = () => {
-    return(
-        <h1>Home</h1>
-    )
-}
+  return (
+    <>
+      <Header />
+      <h1 className="flex justify-center mt-4">Home</h1>
+    </>
+  );
+};
