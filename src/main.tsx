@@ -1,12 +1,14 @@
 import ReactDOM from "react-dom/client";
-import './index.css'
+import "./index.css";
 import App from "./App";
 import { ProductProvider } from "./Contexts/ProductContext";
+import { StrictMode } from "react";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-<ProductProvider>
-<App />
-</ProductProvider>
+  <StrictMode>
+    <ProductProvider>
+      <App />
+    </ProductProvider>
+  </StrictMode>
 );

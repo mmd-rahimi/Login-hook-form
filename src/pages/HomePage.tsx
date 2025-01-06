@@ -5,7 +5,7 @@ import { ProductCards } from "../components/ProductCards";
 import { ProductContext } from "../Contexts/ProductContext";
 
 export const HomePage = () => {
-  const products = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   console.log(products);
 
 //   const filteredProducts = products.filter((item) => {
