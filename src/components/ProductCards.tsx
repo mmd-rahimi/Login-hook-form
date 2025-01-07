@@ -11,7 +11,7 @@ export const ProductCards = () => {
       item.category === "men's clothing" || item.category === "women's clothing"
     );
   });
-  console.log(filteredProducts);
+  // console.log(filteredProducts);
 
   return (
     <div className="py-16">

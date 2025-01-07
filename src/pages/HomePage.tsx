@@ -3,12 +3,11 @@ import { Navbar } from "../components/Navbar";
 import { ProductCards } from "../components/ProductCards";
 
 export const HomePage = () => {
-
   return (
     <>
       <Header />
-      <Navbar />
       <ProductCards />
+      <Navbar />
     </>
   );
 };
