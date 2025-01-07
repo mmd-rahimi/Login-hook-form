@@ -4,7 +4,7 @@ import { Link } from "react-router";
 export const CartItem = ({ item }) => {
   const { id, title, image, amount, price } = item;
   return (
-    <div className="flex">
+    <div className="flex gap-x-4 py-2 lg:px-6 w-full border-b font-light text-gray-400">
       <div className="w-full min-h-[150px] flex items-center gap-x-4">
         {/*image*/}
         <Link to={`/product/${id}`}>
@@ -25,25 +25,25 @@ export const CartItem = ({ item }) => {
               <IoMdClose className="text-blue-700 hover:text-blue-950 transition" />
             </div>
           </div>
-        </div>
-        <div>
-          {/*quantity*/}
-          <div className="flex flex-1 max-w-[100px] bg-blue-300 items-center h-full border text-blue-950 font-medium">
-            {/* - icon */}
-            <div className="felx-1">
-              <IoMdRemove />
+          <div className="flex">
+            {/*quantity*/}
+            <div className="flex flex-1 max-w-[100px] items-center h-full text-blue-950 font-medium">
+              {/* - icon */}
+              <div className="felx-1 flex justify-center items-center cursor-pointer">
+                <IoMdRemove />
+              </div>
+              {/*amount*/}
+              <div className="h-full flex justify-center items-center px-2">{amount}</div>
+              {/* + icon */}
+              <div className="felx-1 h-full flex justify-center items-center cursor-pointer">
+                <IoMdAdd />
+              </div>
             </div>
-            {/*amount*/}
-            <div>{amount}</div>
-            {/* + icon */}
-            <div>
-              <IoMdAdd />
-            </div>
+            {/*item price*/}
+            <div className="flex-1 flex justify-around items-center ">$ {price}</div>
+            {/*final price*/}
+            <div className="flex-1 flex justify-center items-center text-blue-950 font-medium">{`$ ${parseFloat(price * amount).toFixed(2)}`}</div>
           </div>
-          {/*item price*/}
-          <div>price</div>
-          {/*final price*/}
-          <div>final price</div>
         </div>
       </div>
     </div>
