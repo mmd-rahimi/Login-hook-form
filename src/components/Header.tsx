@@ -1,18 +1,17 @@
+import { useContext } from "react";
 import { CiShoppingCart } from "react-icons/ci";
-import { useNavigate } from "react-router";
+import { SidebarContext } from "../Contexts/SidebarContext";
+
 
 export const Header = () => {
-  const navigate = useNavigate();
+
+const {isOpen, setIsOpen} = useContext(SidebarContext)
+
   return (
-    <div className="flex flex-row justify-around">
+    <div className="flex flex-row justify-around mt-4">
       <div className="w-48 flex justify-center">
-        <button
-          className=" hover:scale-150  transition-transform"
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          <CiShoppingCart size={32} />
+        <button className=" hover:scale-150  transition-transform" onClick={ () => setIsOpen(!isOpen)}>
+          <CiShoppingCart size={42} />
         </button>
       </div>
       <h1 className="font-bold text-3xl border-b-4 border-black p-2">
@@ -20,7 +19,7 @@ export const Header = () => {
       </h1>
       <input
         className="border-b-2 w-48 p-2 focus:outline-none"
-        placeholder="جستجو..."
+        placeholder="Search..."
         type="search"
       />
     </div>
