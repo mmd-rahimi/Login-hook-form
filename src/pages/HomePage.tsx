@@ -6,8 +6,8 @@ export const HomePage = () => {
   return (
     <>
       <Header />
+      <Navbar /> 
       <ProductCards />
-      <Navbar />
     </>
   );
 };

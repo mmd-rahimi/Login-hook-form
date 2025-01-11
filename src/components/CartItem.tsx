@@ -1,7 +1,18 @@
+import { FC } from "react";
 import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
 import { Link } from "react-router";
 
-export const CartItem = ({ item }) => {
+interface CartItemProps {
+  item: {
+    id: number;
+    title: string;
+    image: string;
+    amount: number;
+    price: number;
+  };
+}
+
+export const CartItem: FC<CartItemProps> = ({ item }) => {
   const { id, title, image, amount, price } = item;
   return (
     <div className="flex gap-x-4 py-2 lg:px-6 w-full border-b font-light text-gray-400">
@@ -33,16 +44,22 @@ export const CartItem = ({ item }) => {
                 <IoMdRemove />
               </div>
               {/*amount*/}
-              <div className="h-full flex justify-center items-center px-2">{amount}</div>
+              <div className="h-full flex justify-center items-center px-2">
+                {amount}
+              </div>
               {/* + icon */}
               <div className="felx-1 h-full flex justify-center items-center cursor-pointer">
                 <IoMdAdd />
               </div>
             </div>
             {/*item price*/}
-            <div className="flex-1 flex justify-around items-center ">$ {price}</div>
+            <div className="flex-1 flex justify-around items-center ">
+              $ {price}
+            </div>
             {/*final price*/}
-            <div className="flex-1 flex justify-center items-center text-blue-950 font-medium">{`$ ${parseFloat(price * amount).toFixed(2)}`}</div>
+            <div className="flex-1 flex justify-center items-center text-blue-950 font-medium">{`$ ${(
+              price * amount
+            ).toFixed(2)}`}</div>
           </div>
         </div>
       </div>

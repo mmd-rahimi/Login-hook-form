@@ -1,9 +1,28 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, FC, ReactNode, useEffect, useState } from "react";
 
-export const ProductContext = createContext();
+interface Product {
+  product: {
+    id: number;
+    title: string;
+    image: string;
+    price: number;
+    category: string;
+    description?: string;
+  };
+}
 
-export const ProductProvider = ({ children }) => {
+interface ProductContextType {
+  products: Product[];
+}
+
+export interface ProductProviderProps {
+  children: ReactNode;
+}
+
+export const ProductContext = createContext<ProductContextType | undefined>(undefined);
+
+export const ProductProvider : FC<ProductProviderProps> = ({ children }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -15,14 +34,6 @@ export const ProductProvider = ({ children }) => {
       });
     };
     fetchProducts();
-
-    // const fetchProducts = async () => {
-    //   const response = await fetch("https://fakestoreapi.com/products");
-    //   const data = await response.json();
-    //   console.log(data);
-    //   setProducts(data);
-    // };
-    // fetchProducts();
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, FC, useState } from "react";
 
 export const SidebarContext = createContext();
 
@@ -14,3 +14,5 @@ export const SidebarProvider = ({ children }) => {
     </SidebarContext.Provider>
   );
 };
+
+

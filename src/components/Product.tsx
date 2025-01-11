@@ -1,9 +1,19 @@
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { BsEyeFill, BsPlus } from "react-icons/bs";
 import { Link } from "react-router";
 import { CartContext } from "../Contexts/CartContext";
 
-export const Product = ({ product }) => {
+interface ProductProps {
+  product: {
+    id: number;
+    title: string;
+    image: string;
+    price: number;
+    category: string;
+  };
+}
+
+export const Product : FC<ProductProps> = ({ product }) => {
 
   const {addToCart} = useContext(CartContext)
   // console.log(product);
