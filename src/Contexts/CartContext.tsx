@@ -1,19 +1,40 @@
-import { createContext, useState } from "react";
+import React, { createContext, ReactNode, useState } from "react";
 
-export const CartContext = createContext();
+// تعریف نوع‌های مربوط به محصول
+type ID = number | string;
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+interface Product {
+  id: ID;
+  [key: string]: any;
+}
 
-  const addToCart = (product, id) => {
+// تعریف نوع‌های مربوط به آیتم‌های سبد خرید
+interface CartItem extends Product {
+  amount: number;
+}
+
+interface CartProviderProps {
+  children: ReactNode;
+}
+
+// تعریف نوع‌های مربوط به Context
+interface CartContextType {
+  cart: CartItem[];
+  addToCart: (product: Product, id: ID) => void;
+}
+
+export const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  const addToCart = (product: Product, id: ID) => {
     const newItem = { ...product, amount: 1 };
-    //check if already in the cart
-    const cartItem = cart.find((item) => {
-      return item.id === id;
-    });
-    //if item already exist
+    // بررسی کنید که آیا محصول در سبد خرید وجود دارد
+    const cartItem = cart.find((item) => item.id === id);
+    // اگر محصول وجود دارد
     if (cartItem) {
-      const newCart = [...cart].map((item) => {
+      const newCart = cart.map((item) => {
         if (item.id === id) {
           return { ...item, amount: cartItem.amount + 1 };
         } else {
@@ -27,7 +48,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart }}>
       {children}
     </CartContext.Provider>
   );

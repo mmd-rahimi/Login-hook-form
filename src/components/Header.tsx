@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { CiShoppingCart } from "react-icons/ci";
 import { SidebarContext } from "../Contexts/SidebarContext";
-
-
+import { SidebarContextType } from "../Contexts/SidebarContext"
+ 
 export const Header = () => {
 
-const {isOpen, setIsOpen} = useContext(SidebarContext)
+const {isOpen, setIsOpen} = useContext(SidebarContext) as SidebarContextType
 
   return (
     <div className="flex flex-row justify-around mt-4">
